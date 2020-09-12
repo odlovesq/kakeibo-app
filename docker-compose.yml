@@ -26,10 +26,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-front
+    working_dir: /myfront
     command: npm run dev
     environment:
       HOST: 0.0.0.0
     ports:
       - "8080:3000"
+    volumes:
+      - "./kakeibo-front:/myfront"
+      - node_modules:/myfront/node_modules
 volumes:
   bundle:
+  node_modules:

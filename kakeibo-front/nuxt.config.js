@@ -86,4 +86,9 @@ export default {
    */
   build: {},
   telemetry: false,
+  watchers: {
+    webpack: {
+      poll: true,
+    },
+  },
 }
