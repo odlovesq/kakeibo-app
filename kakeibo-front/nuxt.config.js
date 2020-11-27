@@ -5,7 +5,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: 'spa',
+  ssr: false,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -53,12 +53,36 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    host: '192.168.99.100',
+    port: 3000,
+  },
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: false,
+      home: '/dashboard',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: false,
+        },
+      },
+    },
+  },
+  router: {
+    middleware: ['auth'],
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

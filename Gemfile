@@ -28,7 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'pry-rails', :group => [:development, :test]
+  gem 'pry-byebug', '~> 3.9', :group => [:development, :test]
 end
 
 group :development do
@@ -45,3 +45,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem 'nokogiri', '~> 1.10', '>= 1.10.10'
+
+# ログイン機能
+gem 'devise', '~> 4.7', '>= 4.7.2'
+gem 'devise_token_auth', '~> 1.1', '>= 1.1.4'
+
+# CORS
+gem 'rack-cors', '~> 1.1', '>= 1.1.1'
