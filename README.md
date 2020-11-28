@@ -7,6 +7,12 @@
 $ docker-machine create --driver virtualbox kakeibo
 ```
 
+### 環境変数の用意
+```
+$ cp .env.sample .env
+$ vim .env // 必要な環境変数の設定を書き換える
+```
+
 ## 起動方法(Fish)
 ### docker-machineの起動
 ```
