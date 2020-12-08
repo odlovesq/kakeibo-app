@@ -31,13 +31,7 @@
             label="パスワード確認"
           />
           <v-card-actions>
-            <v-btn
-              color="light-green darken-1"
-              class="white--text"
-              @click="registerUser"
-            >
-              新規登録
-            </v-btn>
+            <router-link @click.native="sendUserInfo" :to="{ hash: '#confirmation' }">次へ</router-link>
           </v-card-actions>
         </v-form>
       </v-card-text>
@@ -60,18 +54,9 @@ export default {
     }
   },
   methods: {
-    registerUser() {
-      this.$axios.post('http://192.168.99.100:3000/api/v1/auth', this.user).then(response => {
-        localStorage.setItem('access-token', response.headers['access-token'])
-        localStorage.setItem('client', response.headers.client)
-        localStorage.setItem('uid', response.headers.uid)
-        localStorage.setItem('token-type', response.headers['token-type'])
-        window.location.href = '/dashboard'
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    },
+    sendUserInfo() {
+      this.$emit('catchUserInfo', this.user);
+    }
   },
 };
 </script>
