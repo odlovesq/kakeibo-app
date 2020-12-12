@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_151407) do
+ActiveRecord::Schema.define(version: 2020_12_12_161359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "household_account_book_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "household_account_book_id"
+    t.index ["household_account_book_id"], name: "index_household_account_book_users_on_household_account_book_id"
+    t.index ["user_id"], name: "index_household_account_book_users_on_user_id"
+  end
+
+  create_table "household_account_books", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "deleted_at"
+    t.index ["name"], name: "index_household_account_books_on_name", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
