@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <keep-alive>
-      <component :user="user" @confirmation-button-click="setUserInfo" v-bind:is="subPage"></component>
+      <component :user="user" @confirmation-button-click="assignUserAttribute" v-bind:is="subPage"></component>
     </keep-alive>
   </v-container>
 </template>
@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    setUserInfo(user) {
+    assignUserAttribute(user) {
       this.user.nickname = user.nickname
       this.user.password = user.password
       this.user.email = user.email
