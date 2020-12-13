@@ -22,7 +22,7 @@
         />
 
         <v-text-field
-          :value="'*'.repeat(user.password.length)"
+          :value="user.password | passwordMask"
           label="パスワード"
           outlined
           readonly
@@ -32,29 +32,33 @@
       <v-card-actions>
         <router-link to="/signup">戻る</router-link>
       </v-card-actions>
-      <v-form ref="form" lazy-validation>
-        <v-card-actions>
-          <v-btn
-            color="light-green darken-1"
-            class="white--text"
-            @click="registerUser"
-          >
-            新規登録
-          </v-btn>
-        </v-card-actions>
-      </v-form>
+      <v-card-actions>
+        <v-btn
+          color="light-green darken-1"
+          class="white--text"
+          @click="registerUser"
+        >
+          新規登録
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-container>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'SignupConfirmation',
   auth: 'guest',
   props: {
     'user': {
-      type: Object
+      type: Object,
+      required: true
     }
+  },
+  filters: {
+    passwordMask: function(val) {
+      return '*'.repeat(val.length)
+    },
   },
   methods: {
     registerUser() {

@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'SignupInput',
   auth: 'guest',
   data() {
     return {
@@ -55,8 +55,8 @@ export default {
   },
   methods: {
     sendUserInfo() {
-      this.$emit('catchUserInfo', this.user);
-    }
+      this.$emit('confirmation-button-click', this.user);
+    },
   },
 };
 </script>
