@@ -1,5 +1,4 @@
 class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
-  skip_before_action :verify_authenticity_token
   wrap_parameters User, include: [:name, :email, :password, :password_confirmation]
 
   def create
