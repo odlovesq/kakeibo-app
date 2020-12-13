@@ -31,7 +31,7 @@
             label="パスワード確認"
           />
           <v-card-actions>
-            <router-link @click.native="clickNextButton" :to="{ hash: '#confirmation' }">次へ</router-link>
+            <router-link @click.native="clickedNextButton" :to="{ hash: '#confirmation' }">次へ</router-link>
           </v-card-actions>
         </v-form>
       </v-card-text>
@@ -54,7 +54,7 @@ export default {
     }
   },
   methods: {
-    clickNextButton() {
+    clickedNextButton() {
       this.$emit('confirmation-button-click', this.user);
     },
   },

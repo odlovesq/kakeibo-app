@@ -56,9 +56,7 @@ export default {
     }
   },
   filters: {
-    passwordMask: function(val) {
-      return '*'.repeat(val.length)
-    },
+    passwordMask: (val) => '*'.repeat(val.length),
   },
   methods: {
     registerUser() {
